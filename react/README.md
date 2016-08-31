@@ -33,18 +33,18 @@
     ```jsx
     // bad
     const Listing = React.createClass({
-      // ...
-      render() {
-        return <div>{this.state.hello}</div>;
-      }
+        // ...
+        render() {
+          return <div>{this.state.hello}</div>;
+        }
     });
 
     // good
     class Listing extends React.Component {
-      // ...
-      render() {
-        return <div>{this.state.hello}</div>;
-      }
+        // ...
+        render() {
+            return <div>{this.state.hello}</div>;
+        }
     }
     ```
 
@@ -53,19 +53,19 @@
     ```jsx
     // bad
     class Listing extends React.Component {
-      render() {
-        return <div>{this.props.hello}</div>;
-      }
+        render() {
+            return <div>{this.props.hello}</div>;
+        }
     }
 
     // bad (relying on function name inference is discouraged)
     const Listing = ({ hello }) => (
-      <div>{hello}</div>
+        <div>{hello}</div>
     );
 
     // good
     function Listing({ hello }) {
-      return <div>{hello}</div>;
+        return <div>{hello}</div>;
     }
     ```
 
@@ -108,23 +108,23 @@
     ```jsx
     // bad
     export default function withFoo(WrappedComponent) {
-      return function WithFoo(props) {
-        return <WrappedComponent {...props} foo />;
-      }
+        return function WithFoo(props) {
+            return <WrappedComponent {...props} foo />;
+        }
     }
 
     // good
     export default function withFoo(WrappedComponent) {
-      function WithFoo(props) {
-        return <WrappedComponent {...props} foo />;
-      }
+        function WithFoo(props) {
+            return <WrappedComponent {...props} foo />;
+        }
 
-      const wrappedComponentName = WrappedComponent.displayName
-        || WrappedComponent.name
-        || 'Component';
+        const wrappedComponentName = WrappedComponent.displayName
+            || WrappedComponent.name
+            || 'Component';
 
-      WithFoo.displayName = `withFoo(${wrappedComponentName})`;
-      return WithFoo;
+        WithFoo.displayName = `withFoo(${wrappedComponentName})`;
+        return WithFoo;
     }
     ```
 ## Declaration
@@ -134,8 +134,8 @@
     ```jsx
     // bad
     export default React.createClass({
-      displayName: 'ReservationCard',
-      // stuff goes here
+        displayName: 'ReservationCard',
+        // stuff goes here
     });
 
     // good
@@ -154,8 +154,8 @@
 
     // good
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+        superLongParam="bar"
+        anotherSuperLongParam="baz"
     />
 
     // if props fit in one line then keep it on the same line
@@ -163,10 +163,10 @@
 
     // children get indented normally
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+        superLongParam="bar"
+        anotherSuperLongParam="baz"
     >
-      <Quux />
+        <Quux />
     </Foo>
     ```
 
@@ -227,14 +227,14 @@
     ```jsx
     // bad
     <Foo
-      UserName="hello"
-      phone_number={12345678}
+        UserName="hello"
+        phone_number={12345678}
     />
 
     // good
     <Foo
-      userName="hello"
-      phoneNumber={12345678}
+        userName="hello"
+        phoneNumber={12345678}
     />
     ```
 
@@ -243,12 +243,12 @@
     ```jsx
     // bad
     <Foo
-      hidden={true}
+        hidden={true}
     />
 
     // good
     <Foo
-      hidden
+        hidden
     />
     ```
 
@@ -310,18 +310,18 @@
   ```jsx
   // bad
   {todos.map((todo, index) =>
-    <Todo
-      {...todo}
-      key={index}
-    />
+        <Todo
+        {...todo}
+        key={index}
+        />
   )}
 
   // good
   {todos.map(todo => (
-    <Todo
-      {...todo}
-      key={todo.id}
-    />
+        <Todo
+        {...todo}
+        key={todo.id}
+        />
   ))}
   ```
 
@@ -332,12 +332,12 @@
     ```jsx
     // bad
     <Foo
-      ref="myRef"
+        ref="myRef"
     />
 
     // good
     <Foo
-      ref={ref => { this.myRef = ref; }}
+        ref={ref => { this.myRef = ref; }}
     />
     ```
 
@@ -355,17 +355,17 @@
 
     // good
     render() {
-      return (
-        <MyComponent className="long body" foo="bar">
-          <MyChild />
-        </MyComponent>
-      );
+        return (
+            <MyComponent className="long body" foo="bar">
+            <MyChild />
+            </MyComponent>
+        );
     }
 
     // good, when single line
     render() {
-      const body = <div>hello</div>;
-      return <MyComponent>{body}</MyComponent>;
+        const body = <div>hello</div>;
+        return <MyComponent>{body}</MyComponent>;
     }
     ```
 
@@ -386,13 +386,13 @@
     ```jsx
     // bad
     <Foo
-      bar="bar"
-      baz="baz" />
+        bar="bar"
+        baz="baz" />
 
     // good
     <Foo
-      bar="bar"
-      baz="baz"
+        bar="bar"
+        baz="baz"
     />
     ```
 
@@ -402,16 +402,16 @@
 
     ```jsx
     function ItemList(props) {
-      return (
-        <ul>
-          {props.items.map((item, index) => (
-            <Item
-              key={item.key}
-              onClick={() => doSomethingWith(item.name, index)}
-            />
-          ))}
-        </ul>
-      );
+        return (
+            <ul>
+            {props.items.map((item, index) => (
+                <Item
+                key={item.key}
+                onClick={() => doSomethingWith(item.name, index)}
+                />
+            ))}
+            </ul>
+        );
     }
     ```
 
@@ -422,30 +422,30 @@
     ```jsx
     // bad
     class extends React.Component {
-      onClickDiv() {
-        // do stuff
-      }
+        onClickDiv() {
+            // do stuff
+        }
 
-      render() {
-        return <div onClick={this.onClickDiv.bind(this)} />
-      }
+        render() {
+            return <div onClick={this.onClickDiv.bind(this)} />
+        }
     }
 
     // good
     class extends React.Component {
-      constructor(props) {
-        super(props);
+        constructor(props) {
+            super(props);
 
-        this.onClickDiv = this.onClickDiv.bind(this);
-      }
+            this.onClickDiv = this.onClickDiv.bind(this);
+        }
 
-      onClickDiv() {
-        // do stuff
-      }
+        onClickDiv() {
+            // do stuff
+        }
 
-      render() {
-        return <div onClick={this.onClickDiv} />
-      }
+        render() {
+            return <div onClick={this.onClickDiv} />
+        }
     }
     ```
 
@@ -455,20 +455,20 @@
     ```jsx
     // bad
     React.createClass({
-      _onClickSubmit() {
-        // do stuff
-      },
+        _onClickSubmit() {
+            // do stuff
+        },
 
-      // other stuff
+        // other stuff
     });
 
     // good
     class extends React.Component {
-      onClickSubmit() {
-        // do stuff
-      }
+        onClickSubmit() {
+            // do stuff
+        }
 
-      // other stuff
+        // other stuff
     }
     ```
 
@@ -477,12 +477,12 @@
     ```jsx
     // bad
     render() {
-      (<div />);
+        (<div />);
     }
 
     // good
     render() {
-      return (<div />);
+        return (<div />);
     }
     ```
 
@@ -511,23 +511,23 @@
     import React, { PropTypes } from 'react';
 
     const propTypes = {
-      id: PropTypes.number.isRequired,
-      url: PropTypes.string.isRequired,
-      text: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        url: PropTypes.string.isRequired,
+        text: PropTypes.string,
     };
 
     const defaultProps = {
-      text: 'Hello World',
+        text: 'Hello World',
     };
 
     class Link extends React.Component {
-      static methodsAreOk() {
-        return true;
-      }
+        static methodsAreOk() {
+            return true;
+        }
 
-      render() {
-        return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>
-      }
+        render() {
+            return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>
+        }
     }
 
     Link.propTypes = propTypes;
